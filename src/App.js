@@ -2,6 +2,7 @@ import React, {useRef, useCallback, useState} from 'react';
 import produce from 'immer';
 import Button from "./components/Button";
 import Text from "./components/Text";
+import Input from "./components/Input";
 
 const App = () => {
   const nextId = useRef(1);
@@ -68,23 +69,22 @@ const App = () => {
             TextTitle={"제목"}
             TextColor={"blue"}
           />
-          <input
-            name="title"
-            placeholder="제목"
-            value={form.title}
-            onChange={onChange}
-          />
+          <Input name="title"
+                 placeholder="제목"
+                 value={form.title}
+                 onChange={onChange}/>
+
         </div>
         <div>
           <Text
             TextTitle={"내용"}
             TextColor={"red"}
           />
-          <input
-            name="content"
-            placeholder="내용"
-            value={form.content}
-            onChange={onChange}
+          <Input
+              name="content"
+              placeholder="내용"
+              value={form.content}
+              onChange={onChange}
           />
         </div>
         <Button Text={"등록"}/>
@@ -94,7 +94,7 @@ const App = () => {
           {data.array.map(info => (
             <li key={info.id}>
               {info.title}({info.content})
-              <button onClick={() => onRemove(info.id)}>삭제</button>
+              <Button Text={"삭제"} FontColor={"red"} OnClick={() => onRemove(info.id)}/>
             </li>
           ))}
         </ul>
